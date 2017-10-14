@@ -56,7 +56,12 @@ chrome.runtime.sendMessage({}, function(spActivated) {
           maxLinkScore = linkScore;
         }
       if (maxLinkScore > 0) { // if at least one of them has a matching word
-        window.location.href = links[maxLinkIndex].getAttribute("href");
+        links[maxLinkIndex].style.color = "black";
+        links[maxLinkIndex].style.background = "#ffff00";
+        setTimeout(function() {
+          window.location.href = links[maxLinkIndex].getAttribute("href");
+        }, 2000);
+        
       } else {
         console.log("No link matches!");
       }
