@@ -16,6 +16,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, callback) {
 
 var client;
 var spActivated = false;
+var listening = false;
 
 function startRecognition() {
 
@@ -126,4 +127,16 @@ function sendToTab(data) {
   });
 }
 
-startRecognition();
+var waitForMicrophone = setInterval(function() {
+  navigator.getUserMedia({ audio: true }, (stream) => {
+    if (!listening) {
+      listening = true;
+      clearInterval(waitForMicrophone);
+      startRecognition();
+    }      
+  }, function (e) {
+      console.log("Waiting for microphone permission..." + e);
+  });
+  
+},3000);
+
