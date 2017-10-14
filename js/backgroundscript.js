@@ -28,7 +28,7 @@ function startRecognition() {
     console.log("onFinalResponseReceived: " + response);
 
     // start/stop recording speech
-    if (response.includes("Each") || response.includes("Speech") || response.includes("each") || response.includes("speech")) {
+    if (response.toLowerCase().includes("taco")) {
       if (response.includes("start") && !spActivated) {
         spActivated = true;
         sendToTab({

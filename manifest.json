@@ -1,6 +1,6 @@
 
  {
-  "name": "SpeechPoint",
+  "name": "Talko",
   "description": "Navigate Chrome using voice commands",
   "version": "0.1",
   "manifest_version": 2,

@@ -1,4 +1,4 @@
-console.log("speechpoint activated...");
+console.log("Talko running (not activated)...");
 
 chrome.runtime.sendMessage({}, function(spActivated) {
   // console.log(response.farewell);
