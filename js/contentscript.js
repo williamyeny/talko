@@ -60,14 +60,15 @@ chrome.runtime.sendMessage({}, function(spActivated) {
       } else {
         console.log("No link matches!");
       }
-  }
-  else if (request.spType == "go back") {
-    goBackToPreviousPage();
-  } else if (request.spType == "scroll down") {
-    scrollDown();
-  } else if (request.spType == "scroll up") {
-    scrollUp();
-  }
+    } else if (request.spType == "go back") {
+      goBackToPreviousPage();
+    } else if (request.spType == "scroll down") {
+      scrollDown();
+    } else if (request.spType == "scroll up") {
+      scrollUp();
+    } else if (request.spType == "error") {
+      document.getElementById("sp-status").innerHTML= "Try again :(";
+    }
 
   });
 });
