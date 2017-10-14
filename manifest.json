@@ -6,10 +6,9 @@
   "manifest_version": 2,
   "background": {
     "scripts": [
-      "js/backgroundscript.js",
-      "js/BingSpeech.js"
-    ],
-    "persistent": false
+      "js/BingSpeech.js",
+      "js/backgroundscript.js"      
+    ]
   },
   "permissions": [
     "activeTab",
