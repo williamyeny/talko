@@ -66,6 +66,10 @@ function startRecognition() {
       if (response == "Scroll up.") {
         sendToTab({"spType": "scroll up"});
       }
+
+      if (response == "Search.") {
+        sendToTab({"spType": "search"});  
+      }
     }
   }
 
