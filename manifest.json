@@ -1,0 +1,36 @@
+
+ {
+  "name": "SpeechPoint",
+  "description": "Navigate Chrome using voice commands",
+  "version": "0.1",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["js/backgroundscript.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "web_accessible_resources":[
+
+    // "js/vendor/jquery-3.2.1.min.js"
+  ],
+
+  "content_scripts": [ {
+    "js": [
+      // "js/vendor/jquery-3.2.1.min.js",
+
+      "js/contentscript.js"
+    ],
+    "css" : [ "css/spstyle.css" ],
+    "matches": ["*://*/*"]
+    // "all_frames": true
+  }]
+
+  // "icons": {
+  //   "16": "icon16.png",
+  //   "48": "icon48.png",
+  //   "128": "icon128.png"
+  // }
+}
