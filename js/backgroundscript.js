@@ -10,6 +10,10 @@ chrome.runtime.onInstalled.addListener((details) => {
     });
 })
 
+chrome.runtime.onMessage.addListener(function(request, sender, callback) {
+  callback(spActivated);
+});
+
 var client;
 var spActivated = false;
 
