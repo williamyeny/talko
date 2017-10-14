@@ -69,7 +69,7 @@ chrome.runtime.sendMessage({}, function(spActivated) {
     scrollUp();
   }
 
-});
+  });
 });
 
 function scrollDown() {
@@ -112,12 +112,10 @@ function goBackToPreviousPage(){
     window.history.back();
 }
 
-setTimeout(function () {
-    console.log("start scrolling : " + screen.height/2);
-    console.log((new Date()).getTime());
-    for(i = 0; i < 60; i++){
-        setTimeout(function () {window.scrollTo(0, screen.height/2)}, 1000/60);
-    }
-    window.scrollTo(0, screen.height/2);
-    console.log((new Date()).getTime());
-}, 1000);
+function scrollDown(percentageOfPage){
+    window.scrollTo(0, window.pageYOffset + screen.height*percentOfPage);;
+}
+
+function scrollUp(percentageOfPage){
+    window.scrollTo(0, window.pageYOffset - screen.height*percentOfPage);;
+}
