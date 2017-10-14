@@ -22,7 +22,7 @@ function startRecognition() {
     console.log("onFinalResponseReceived: " + response);
 
     // start/stop recording speech
-    if (response.includes("Each") || response.includes("Speech")) {
+    if (response.includes("Each") || response.includes("Speech") || response.includes("each") || response.includes("speech")) {
       if (response.includes("start")) {
         sendToTab({
           "spType": "start"
@@ -32,6 +32,31 @@ function startRecognition() {
           "spType": "stop"
         });
       }
+    }
+
+    // click
+    var firstWord = response.split(" ")[0];
+    console.log("First word: " + firstWord);
+    if (firstWord.includes("Click") || firstWord.includes("Quick") ) {
+      sendToTab({
+        "spType": "click",
+        "data": response.substr(response.indexOf(" ") + 1)
+      })
+    }
+
+    // back
+    if (response == "Go back.") {
+
+    }
+
+    // scroll down
+    if (response == "Scroll down.") {
+
+    }
+
+    // scroll up
+    if (response == "Scroll up.") {
+
     }
   }
 
