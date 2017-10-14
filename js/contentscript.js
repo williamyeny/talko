@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.spType == "click") {
       console.log("click: " + request.data);
     } else if (request.spType == "go back") {
-
+        goBackToPreviousPage();
     } else if (request.spType == "scroll down") {
 
     } else if (request.spType == "scroll up") {
@@ -33,3 +33,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
   }
 });
+
+function goBackToPreviousPage(){
+    window.history.back();
+}
