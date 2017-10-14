@@ -1,0 +1,12 @@
+#sp-status-div {
+  position:fixed; 
+  right:0px; 
+  padding:4px;
+  background-color:black;
+  bottom:50px; 
+  width:100px;
+}
+
+#sp-status {
+  color:white;
+}

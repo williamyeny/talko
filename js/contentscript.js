@@ -1,13 +1,16 @@
 console.log("speechpoint activated...");
 var spActivated = false;
+var spStatus;
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
   // voice functions
-  if(request.spType == "start") {
+  if(request.spType == "start" && !spActivated) {
     console.log("started");
     spActivated = true;
-  } else if(request.spType == "stop") {
+    document.body.innerHTML += "<div id=\"sp-status-div\"><p id=\"sp-status\">Idle</p></div>"
+    // spStatus = 
+  } else if(request.spType == "stop" && spActivated) {
     console.log("stopped");
     spActivated = false;
   } else if(request.spType == "onVoiceDetected") {
