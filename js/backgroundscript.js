@@ -93,7 +93,7 @@ function startRecognition() {
 }
 
 function stopRecognition() {
-  bingClientRecognition.endMicAndContinuousRecognition();
+  client.endMicAndContinuousRecognition();
 }
 
 function sendToTab(data) {
