@@ -13,8 +13,7 @@
   },
   "permissions": [
     "activeTab",
-    "storage",
-    "audioCapture"
+    "storage"
   ],
   "web_accessible_resources":[
 
