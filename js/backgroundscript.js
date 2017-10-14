@@ -54,17 +54,17 @@ function startRecognition() {
 
       // back
       if (response == "Go back.") {
-
+        sendToTab({"spType": "go back"});
       }
 
       // scroll down
       if (response == "Scroll down.") {
-
+        sendToTab({"spType": "scroll down"});
       }
 
       // scroll up
       if (response == "Scroll up.") {
-
+        sendToTab({"spType": "scroll up"});
       }
     }
   }
