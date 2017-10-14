@@ -1,6 +1,7 @@
 console.log("speechpoint activated...");
 var spActivated = false;
 var spStatus;
+document.body.innerHTML += "<div id=\"sp-status-div\"><p id=\"sp-status\">Not running</p></div>"
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
@@ -8,19 +9,21 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if(request.spType == "start" && !spActivated) {
     console.log("started");
     spActivated = true;
-    document.body.innerHTML += "<div id=\"sp-status-div\"><p id=\"sp-status\">Idle</p></div>"
+    document.getElementById("sp-status").innerHTML = "Ready...";
     // spStatus = 
   } else if(request.spType == "stop" && spActivated) {
-    console.log("stopped");
+    document.getElementById("sp-status").innerHTML = "Not running...";
     spActivated = false;
   } else if(request.spType == "onVoiceDetected") {
     console.log("onVoiceDetected");
+    document.getElementById("sp-status").innerHTML= "Listening...";
   } else if(request.spType == "onVoiceEnded") {
+    document.getElementById("sp-status").innerHTML ="Processing...";
     console.log("onVoiceEnded");
   } else if (request.spType == "onNetworkActivityStarted") {
-
+    document.getElementById("sp-status").innerHTML ="Processing...";
   } else if (request.spType == "onNetworkActivityEnded") {
-
+    document.getElementById("sp-status").innerHTML = "Done!";
   } else if (spActivated) {
     if (request.spType == "click") {
       console.log("click: " + request.data);
