@@ -113,10 +113,10 @@ function goBackToPreviousPage(){
     window.history.back();
 }
 
-function scrollDown(percentageOfPage){
-    window.scrollTo(0, window.pageYOffset + screen.height*percentOfPage);;
-}
+// function scrollDown(percentageOfPage){
+//     window.scrollTo(0, window.pageYOffset + screen.height*percentOfPage);;
+// }
 
-function scrollUp(percentageOfPage){
-    window.scrollTo(0, window.pageYOffset - screen.height*percentOfPage);;
-}
+// function scrollUp(percentageOfPage){
+//     window.scrollTo(0, window.pageYOffset - screen.height*percentOfPage);;
+// }
