@@ -10,9 +10,14 @@
       "js/backgroundscript.js"      
     ]
   },
+
   "icons": { 
     "16": "pointer16.png",
     "128": "pointer128.png" 
+  },
+
+  "browser_action": {
+    "default_icon": "pointer16.png"
   },
 
   "permissions": [
