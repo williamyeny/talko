@@ -1,3 +1,5 @@
+//gets the user to grant access to microphone
+
 navigator.getUserMedia = navigator.getUserMedia ||
                     navigator.webkitGetUserMedia ||
                     navigator.mozGetUserMedia;

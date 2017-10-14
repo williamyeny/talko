@@ -1,9 +1,38 @@
 <html>
   <head>
     <script src="js/welcome.js"></script>
+    <link href="css/animate.css" rel="stylesheet">
+    <style>
+      * {
+        font-family: sans-serif;
+        font-weight: 400;
+      }
+      body {
+        background: linear-gradient(141deg, #2f3131, #44403c)
+      }
+      p {
+        color:#cfc5bc;
+        font-size: 18px;
+      }
+      h1 {
+        margin-bottom:10px;
+        color:white;
+        font-size: 22px;
+      }
+      #bg {
+        margin:130px auto;
+        padding: 20px 40px;
+        width:500px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        background: linear-gradient(141deg,#44403c, #2f3131);
+      }
+    </style>
   </head>
   <body>
-    Please give us access to your microphone in order to use this!
+    <div id=bg class="animated fadeInUp"> 
+      <h1>SpeechPoint</h1>    
+      <p>Please grant access to your microphone in order to use this extension!</p>
+    </div>
   </body>
 </html>
 
