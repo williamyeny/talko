@@ -68,17 +68,11 @@ chrome.runtime.sendMessage({}, function(spActivated) {
         scrollUp(.4);
   }
 
-});
+  });
 });
 
 function goBackToPreviousPage(){
     window.history.back();
-}
-
-//Apparently bad idea to do this, but lets do it anyways.
-function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
 }
 
 function scrollDown(percentageOfPage){
@@ -88,9 +82,3 @@ function scrollDown(percentageOfPage){
 function scrollUp(percentageOfPage){
     window.scrollTo(0, window.pageYOffset - screen.height*percentOfPage);;
 }
-
-setTimeout(function () {
-    console.log("start scrolling : " + screen.height/2);
-    window.scrollTo(0, screen.height/2);
-    console.log(window.pageYOffset + " SDFKLDSJFLDSKFDJ");
-}, 1000);
