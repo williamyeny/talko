@@ -102,9 +102,7 @@ function scrollUp() {
 }
 
 function searchBing(){ 
-  chrome.tabs.query({'active': true}, function(tabs) {
-      chrome.tabs.update(tabs[0].id, {url: www.bing.com});
-      });
+    chrome.tabs.update(null, {url: "http://bing.com"});
 }
 function spStart() {
   document.getElementById("sp-status-div").style.background = "linear-gradient(141deg, rgb(68, 64, 60), rgb(47, 49, 49))";
