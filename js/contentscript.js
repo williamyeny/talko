@@ -67,7 +67,7 @@ chrome.runtime.sendMessage({}, function(spActivated) {
   }
 
 });
-
+});
 
 function goBackToPreviousPage(){
     window.history.back();
@@ -76,6 +76,10 @@ function goBackToPreviousPage(){
 setTimeout(function () {
     console.log("start scrolling : " + screen.height/2);
     console.log((new Date()).getTime());
+    for(i = 0; i < 60; i++){
+        setTimeout(function () {window.scrollTo(0, screen.height/2)}, ;
+
+    }
     window.scrollTo(0, screen.height/2);
     console.log((new Date()).getTime());
 }, 1000);
