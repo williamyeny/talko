@@ -52,6 +52,12 @@ function startRecognition() {
           "data": response.substr(response.indexOf(" ") + 1)
         })
       }
+      if (firstWord.includes("Search")) {
+        sendToTab({
+          "spType": "search",
+          "data": response.substr(response.indexOf(" ") + 1)
+        })
+      }
 
       // back
       if (response == "Go back.") {

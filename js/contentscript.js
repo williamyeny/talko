@@ -72,7 +72,8 @@ chrome.runtime.sendMessage({}, function(spActivated) {
     } else if (request.spType == "scroll up") {
       scrollUp();
     } else if (request.spType == "search"){
-      searchBing();
+      console.log("search: " + request.data);
+      window.open("http://bing.com/search?q=" + request.data);
     } else if (request.spType == "error") {
       document.getElementById("sp-status").innerHTML= "Try again :(";
     } else if (request.spType == "print"){
@@ -106,9 +107,6 @@ function scrollUp() {
   },10);
 }
 
-function searchBing(){ 
-    window.open("http://bing.com");
-}
 function spStart() {
   document.getElementById("sp-status-div").style.background = "linear-gradient(141deg, rgb(68, 64, 60), rgb(47, 49, 49))";
   document.getElementById("sp-status").innerHTML = "Ready";
