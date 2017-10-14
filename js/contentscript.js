@@ -27,6 +27,32 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   } else if (spActivated) {
     if (request.spType == "click") {
       console.log("click: " + request.data);
+      var links = document.getElementsByTagName('a');
+      var maxLinkScore = -1;
+      var maxLinkIndex = -1;
+      for (i = 0; i < links.length; i++) {
+        var linkArray = links[i].innerHTML.split(" ");
+        var reqArray = request.data.split(" ");
+        var linkScore = 0;
+        for (j = 0; j < linkArray.length; j++) {
+          for (k = 0; k < reqArray.length; k++) {
+            if (linkArray[j].toLowerCase() == reqArray[k].toLowerCase()) {
+              linkScore++;
+            }
+          }
+        }
+        if (linkScore > maxLinkScore) {
+          maxLinkIndex = i;
+          maxLinkScore = linkScore;
+        } 
+      }
+      if (maxLinkScore > 0) { // if at least one of them has a matching word
+        window.location.href = links[maxLinkIndex].getAttribute("href");
+      } else {
+        console.log("No link matches!");
+      }
+      
+
     } else if (request.spType == "go back") {
         goBackToPreviousPage();
     } else if (request.spType == "scroll down") {
