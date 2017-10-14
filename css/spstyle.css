@@ -1,12 +1,14 @@
 #sp-status-div {
   position:fixed; 
   right:0px; 
-  padding:4px;
-  background-color:black;
+  padding:10px 15px;
+  background: linear-gradient(141deg,#44403c, #2f3131);
   bottom:50px; 
-  width:100px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  width:150px;
 }
 
 #sp-status {
+  font-family:sans-serif;
   color:white;
 }
