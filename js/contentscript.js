@@ -12,9 +12,10 @@ chrome.runtime.sendMessage({}, function(spActivated) {
 
     // voice functions
     if(request.spType == "start") {
-      console.log("started");
+      console.log("Service enabled!");
       document.getElementById("sp-status").innerHTML = "Ready";
     } else if(request.spType == "stop") {
+      console.log("Service stopped.");
       document.getElementById("sp-status").innerHTML = "Not running";
     } else if(request.spType == "onVoiceDetected") {
       console.log("onVoiceDetected");

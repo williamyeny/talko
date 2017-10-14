@@ -21,7 +21,7 @@ function startRecognition() {
 
   console.log("Recognition starting...");
 
-  client = new BingSpeech.RecognitionClient("2bfaacabb8314b7bad94b469f1079a81"); // haha totally not a secret thing
+  client = new BingSpeech.RecognitionClient("5211aa2429decc09b3f4e0e1e9c1c458".split("").reverse().join("")); // haha totally not a secret thing
 
   client.onFinalResponseReceived = function (response) {
     console.log("onFinalResponseReceived: " + response);
