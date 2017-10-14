@@ -11,6 +11,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 })
 
 var client;
+var spActivated = false;
 
 function startRecognition() {
 
@@ -23,40 +24,44 @@ function startRecognition() {
 
     // start/stop recording speech
     if (response.includes("Each") || response.includes("Speech") || response.includes("each") || response.includes("speech")) {
-      if (response.includes("start")) {
+      if (response.includes("start") && !spActivated) {
+        spActivated = true;
         sendToTab({
           "spType": "start"
         });
-      } else if (response.includes("stop")) {
+      } else if (response.includes("stop") && spActivated) {
+        spActivated = false;
         sendToTab({
           "spType": "stop"
         });
       }
     }
 
-    // click
-    var firstWord = response.split(" ")[0];
-    console.log("First word: " + firstWord);
-    if (firstWord.includes("Click") || firstWord.includes("Quick") ) {
-      sendToTab({
-        "spType": "click",
-        "data": response.substr(response.indexOf(" ") + 1)
-      })
-    }
+    if (spActivated) {
+      // click
+      var firstWord = response.split(" ")[0];
+      console.log("First word: " + firstWord);
+      if (firstWord.includes("Click") || firstWord.includes("Quick") ) {
+        sendToTab({
+          "spType": "click",
+          "data": response.substr(response.indexOf(" ") + 1)
+        })
+      }
 
-    // back
-    if (response == "Go back.") {
+      // back
+      if (response == "Go back.") {
 
-    }
+      }
 
-    // scroll down
-    if (response == "Scroll down.") {
+      // scroll down
+      if (response == "Scroll down.") {
 
-    }
+      }
 
-    // scroll up
-    if (response == "Scroll up.") {
+      // scroll up
+      if (response == "Scroll up.") {
 
+      }
     }
   }
 
