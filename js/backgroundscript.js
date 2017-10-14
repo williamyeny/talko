@@ -70,6 +70,11 @@ function startRecognition() {
       if (response == "Search.") {
         sendToTab({"spType": "search"});  
       }
+
+      //print page
+      if (response == "Print."){
+        sendToTab({"spType":"print"});
+      }
     }
   }
 

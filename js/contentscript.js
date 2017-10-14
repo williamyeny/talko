@@ -70,7 +70,9 @@ chrome.runtime.sendMessage({}, function(spActivated) {
       searchBing();
     } else if (request.spType == "error") {
       document.getElementById("sp-status").innerHTML= "Try again :(";
-    } 
+    } else if (request.spType == "print"){
+      printPage();
+    }
 
   });
 });
@@ -118,6 +120,10 @@ function spStop() {
 
 function goBackToPreviousPage(){
     window.history.back();
+}
+
+function printPage(){
+  window.print();
 }
 
 // function scrollDown(percentageOfPage){
