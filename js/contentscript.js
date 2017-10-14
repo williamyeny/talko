@@ -62,8 +62,9 @@ chrome.runtime.sendMessage({}, function(spActivated) {
     else if (request.spType == "go back") {
       goBackToPreviousPage();
     } else if (request.spType == "scroll down") {
-
+        scrollDown(.4);
     } else if (request.spType == "scroll up") {
+        scrollUp(.4);
   }
 
 });
@@ -73,12 +74,22 @@ function goBackToPreviousPage(){
     window.history.back();
 }
 
+//Apparently bad idea to do this, but lets do it anyways.
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
+
+function scrollDown(percentageOfPage){
+    window.scrollTo(0, window.pageYOffset + screen.height*percentOfPage);;
+}
+
+function scrollUp(percentageOfPage){
+    window.scrollTo(0, window.pageYOffset - screen.height*percentOfPage);;
+}
+
 setTimeout(function () {
     console.log("start scrolling : " + screen.height/2);
-    console.log((new Date()).getTime());
-    for(i = 0; i < 60; i++){
-        setTimeout(function () {window.scrollTo(0, screen.height/2)}, 1000/60);
-    }
     window.scrollTo(0, screen.height/2);
-    console.log((new Date()).getTime());
+    console.log(window.pageYOffset + " SDFKLDSJFLDSKFDJ");
 }, 1000);
