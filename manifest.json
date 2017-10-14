@@ -4,17 +4,17 @@
   "description": "Navigate Chrome using voice commands",
   "version": "0.1",
   "manifest_version": 2,
-  "browser_action": {
-          "default_icon": {                    // optional
-            "16": "pointer.png",
-        },
-  },
-  "background": {
+  /*"background": {
     "scripts": [
       "js/BingSpeech.js",
       "js/backgroundscript.js"      
     ]
+  },*/
+  "icons": { 
+    "16": "pointer16.png",
+    "128": "pointer128.png" 
   },
+
   "permissions": [
     "activeTab",
     "storage"
