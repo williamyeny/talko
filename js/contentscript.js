@@ -51,7 +51,6 @@ chrome.runtime.sendMessage({}, function(spActivated) {
           maxLinkIndex = i;
           maxLinkScore = linkScore;
         }
-      }
       if (maxLinkScore > 0) { // if at least one of them has a matching word
         window.location.href = links[maxLinkIndex].getAttribute("href");
       } else {
