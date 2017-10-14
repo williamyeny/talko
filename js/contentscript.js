@@ -2,10 +2,11 @@ console.log("speechpoint activated...");
 
 chrome.runtime.sendMessage({}, function(spActivated) {
   // console.log(response.farewell);
+  document.body.innerHTML += "<div id=\"sp-status-div\"><p id=\"sp-status\">Not running...</p></div>";
   if (!spActivated) {
-    document.body.innerHTML += "<div id=\"sp-status-div\"><p id=\"sp-status\">Not running</p></div>"
+    spStop();
   } else {
-    document.body.innerHTML += "<div id=\"sp-status-div\"><p id=\"sp-status\">Ready...</p></div>"
+    spStart();
   }
 
   chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -13,10 +14,10 @@ chrome.runtime.sendMessage({}, function(spActivated) {
     // voice functions
     if(request.spType == "start") {
       console.log("Service enabled!");
-      document.getElementById("sp-status").innerHTML = "Ready";
+      spStart();
     } else if(request.spType == "stop") {
       console.log("Service stopped.");
-      document.getElementById("sp-status").innerHTML = "Not running";
+      spStop();
     } else if(request.spType == "onVoiceDetected") {
       console.log("onVoiceDetected");
       document.getElementById("sp-status").innerHTML= "Listening";
@@ -60,15 +61,52 @@ chrome.runtime.sendMessage({}, function(spActivated) {
         console.log("No link matches!");
       }
   }
-    else if (request.spType == "go back") {
-      goBackToPreviousPage();
-    } else if (request.spType == "scroll down") {
-
-    } else if (request.spType == "scroll up") {
+  else if (request.spType == "go back") {
+    goBackToPreviousPage();
+  } else if (request.spType == "scroll down") {
+    scrollDown();
+  } else if (request.spType == "scroll up") {
+    scrollUp();
   }
 
 });
 });
+
+function scrollDown() {
+  var scrollDistance = 15.0;
+  var smoothScroll = setInterval(function() {
+    window.scrollBy(0, scrollDistance);
+    scrollDistance *= 0.96;
+
+    if (scrollDistance <= 1) {
+      clearInterval(smoothScroll);
+    }
+  },10);
+}
+
+function scrollUp() {
+  var scrollDistance = 15.0;
+  var smoothScroll = setInterval(function() {
+    window.scrollBy(0, -scrollDistance);
+    scrollDistance *= 0.96;
+
+    if (scrollDistance <= 1) {
+      clearInterval(smoothScroll);
+    }
+  },10);
+}
+
+function spStart() {
+  document.getElementById("sp-status-div").style.background = "linear-gradient(141deg, rgb(68, 64, 60), rgb(47, 49, 49))";
+  document.getElementById("sp-status").innerHTML = "Ready";
+  document.getElementById("sp-status-div").style.opacity = 1;
+}
+
+function spStop() {
+  document.getElementById("sp-status-div").style.background = "#6b6661";
+  document.getElementById("sp-status-div").style.opacity = 0.5;
+  document.getElementById("sp-status").innerHTML = "Not running";
+}
 
 function goBackToPreviousPage(){
     window.history.back();

@@ -70,7 +70,8 @@ function startRecognition() {
   }
 
   client.onError = function (code, requestId) {
-    // console.log("<Error with request n°" + requestId + ">");
+    console.log("<Error with request n°" + requestId + ">");
+    sendToTab({"spType": "error"});
   }
 
   client.onVoiceDetected = function () {
