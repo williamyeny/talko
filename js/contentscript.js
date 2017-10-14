@@ -20,12 +20,14 @@ chrome.runtime.sendMessage({}, function(spActivated) {
       console.log("onVoiceDetected");
       document.getElementById("sp-status").innerHTML= "Listening";
     } else if(request.spType == "onVoiceEnded") {
-      document.getElementById("sp-status").innerHTML ="Ready";
+      document.getElementById("sp-status").innerHTML ="Processing";
       console.log("onVoiceEnded");
     } else if (request.spType == "onNetworkActivityStarted") {
-      document.getElementById("sp-status").innerHTML ="Processing";
+      // document.getElementById("sp-status").innerHTML ="Processing";
+      console.log("activity start");
     } else if (request.spType == "onNetworkActivityEnded") {
       document.getElementById("sp-status").innerHTML = "Ready";
+      console.log("activity ended");
     } else if (request.spType == "click") {
         console.log("click: " + request.data);
         var links = document.getElementsByTagName('a');
