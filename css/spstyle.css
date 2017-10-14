@@ -6,6 +6,7 @@
   bottom:50px; 
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   width:150px;
+  z-index:99999;
 }
 
 #sp-status {
@@ -13,4 +14,5 @@
   color:white;
   margin:0;
   font-size:16px;
+  z-index:999999;
 }
