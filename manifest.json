@@ -4,12 +4,12 @@
   "description": "Navigate Chrome using voice commands",
   "version": "0.1",
   "manifest_version": 2,
-  /*"background": {
+  "background": {
     "scripts": [
       "js/BingSpeech.js",
       "js/backgroundscript.js"      
     ]
-  },*/
+  },
   "icons": { 
     "16": "pointer16.png",
     "128": "pointer128.png" 
