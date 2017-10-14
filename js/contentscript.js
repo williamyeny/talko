@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log("started");
     spActivated = true;
     document.getElementById("sp-status").innerHTML = "Ready...";
-    // spStatus = 
+    // spStatus =
   } else if(request.spType == "stop" && spActivated) {
     document.getElementById("sp-status").innerHTML = "Not running...";
     spActivated = false;
@@ -42,13 +42,16 @@ function goBackToPreviousPage(){
 }
 
 function scrollYDistance(targetY, duration, onDone) {
+
 			stopScroll()
 			if (duration === 0 || (duration && duration < 0) || isNativeSmoothScrollEnabledOn(container.body)) {
+                console.log("smooth scroll");
 				container.toY(targetY)
 				if (onDone) {
 					onDone()
 				}
 			} else {
+                console.log("not smooth scroll");
 				var startY = container.getY()
 				var distance = Math.max(0, targetY) - startY
 				var startTime = new Date().getTime()
@@ -73,5 +76,7 @@ function scrollYDistance(targetY, duration, onDone) {
 			}
 		}
 setTimeout(function () {
-    scroll;
-}, 5000);
+    console.log("start scrolling");
+    window.scrollYDistance(3000);
+    scrollYDistance(3000, 3, null);
+}, 1000);
