@@ -797,7 +797,7 @@ if (!String.prototype.encodeHTML) {
             voice_start: function () { },
             smoothingTimeConstant: 0.99,
             energy_offset: 1e-8,
-            energy_threshold_ratio_pos: 2,
+            energy_threshold_ratio_pos: 10,
             energy_threshold_ratio_neg: 0.5,
             energy_integration: 1,
             filter: [
