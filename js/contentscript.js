@@ -59,7 +59,7 @@ chrome.runtime.sendMessage({}, function(spActivated) {
         links[maxLinkIndex].style.color = "black";
         links[maxLinkIndex].style.background = "#ffff00";
         setTimeout(function() {
-          window.location.href = links[maxLinkIndex].getAttribute("href");
+          links[maxLinkIndex].click();
         }, 2000);
         
       } else {
