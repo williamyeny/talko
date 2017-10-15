@@ -82,6 +82,20 @@ function startRecognition() {
       if (response == "Print."){
         sendToTab({"spType":"print"});
       }
+
+      if (response == "Full screen."){
+        sendToTab({"spType":"fullscreen"});
+      }
+      if (response == "Minimize."){
+        sendToTab({"spType":"minimize"});
+      }
+      if (response == "Maximize."){
+        sendToTab({"spType":"maximize"});
+      }
+      if (response == "New tab."){
+        sendToTab({"spType":"newtab"});
+      }
+
     }
   }
 

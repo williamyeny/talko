@@ -74,11 +74,31 @@ chrome.runtime.sendMessage({}, function(spActivated) {
     } else if (request.spType == "search"){
       console.log("search: " + request.data);
       window.open("http://bing.com/search?q=" + request.data);
-    } else if (request.spType == "error") {
-      document.getElementById("sp-status").innerHTML= "Try again :(";
-    } else if (request.spType == "print"){
+    }
+    /*else if (request.spType == "fullscreen") {
+        window.resizeTo(
+          window.screen.availWidth,
+          window.screen.availHeight
+        );
+    }
+    else if (request.spType == "minimize") {
+      window.minimize();
+    }
+    else if (request.spType == "maximize") {
+      window.resizeTo(
+          window.screen.availWidth / .5,
+          window.screen.availHeight / .5
+        );
+    }*/
+    else if (request.spType == ("newtab")) {
+       window.open();
+    } 
+    else if (request.spType == "print"){
       printPage();
     }
+    else if (request.spType == "error") {
+      document.getElementById("sp-status").innerHTML= "Try again :(";
+    } 
 
   });
 });
