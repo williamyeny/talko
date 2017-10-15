@@ -86,18 +86,25 @@ function startRecognition() {
       }
 
       if (response == "Full screen."){
-        sendToTab({"spType":"fullscreen"});
+        chrome.windows.update(chrome.windows.WINDOW_ID_CURRENT, { state: 'fullscreen' } );
       }
       if (response == "Minimize."){
-        sendToTab({"spType":"minimize"});
+        //sendToTab({"spType":"minimize"});
+        chrome.windows.update(chrome.windows.WINDOW_ID_CURRENT, { state: 'minimized' } );
       }
       if (response == "Maximize."){
-        sendToTab({"spType":"maximize"});
+        //sendToTab({"spType":"maximize"});
+        chrome.windows.update(chrome.windows.WINDOW_ID_CURRENT, {state: 'maximized' } );
       }
       if (response == "New tab."){
         chrome.tabs.create({});
       }
-
+    /*  if (response == "Reload."){
+        chrome.tabs.reload(null,{});
+      }
+      if (response == "Close tab."){
+        sendToTab({"spType":"close"});
+      }*/
     }
   }
 

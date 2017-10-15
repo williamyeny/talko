@@ -79,24 +79,12 @@ chrome.runtime.sendMessage({}, function(spActivated) {
       console.log("search: " + request.data);
       window.open("http://bing.com/search?q=" + request.data);
     }
-    /*else if (request.spType == "fullscreen") {
-        window.resizeTo(
-          window.screen.availWidth,
-          window.screen.availHeight
-        );
-    }
-    else if (request.spType == "minimize") {
-      window.minimize();
-    }
-    else if (request.spType == "maximize") {
-      window.resizeTo(
-          window.screen.availWidth / .5,
-          window.screen.availHeight / .5
-        );
-    }*/
     else if (request.spType == ("newtab")) {
        window.open();
     } 
+   /* else if (request.spType==("close")){
+      window.close();
+    }*/
     else if (request.spType == "print"){
       printPage();
     }
