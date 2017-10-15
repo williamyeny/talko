@@ -7,6 +7,7 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   width:150px;
   z-index:99999;
+  box-sizing: border-box;
 }
 
 #sp-status {
@@ -65,4 +66,19 @@
 .bounce {
   animation-name: bounce;
   transform-origin: center bottom;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  animation-name: slideInRight;
 }

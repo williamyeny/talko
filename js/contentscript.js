@@ -2,7 +2,7 @@ console.log("Talko running (not activated)...");
 
 chrome.runtime.sendMessage({}, function(spActivated) {
   // console.log(response.farewell);
-  document.body.innerHTML += "<div id=\"sp-status-div\"><p id=\"sp-status\">Not running...</p></div>";
+  document.body.innerHTML += "<div id=\"sp-status-div\" class=\"animated slideInRight\"><p id=\"sp-status\">Not running...</p></div>";
   if (!spActivated) {
     spStop();
   } else {
