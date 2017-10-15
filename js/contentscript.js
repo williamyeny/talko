@@ -90,7 +90,14 @@ chrome.runtime.sendMessage({}, function(spActivated) {
     }
     else if (request.spType == "error") {
       document.getElementById("sp-status").innerHTML= "Try again :(";
-    } 
+    } else if (request.spType == "play store") {
+      if (request.data != "") {
+        window.open("https://play.google.com/store/search?q=" + request.data + "&c=apps");
+      } else {
+        window.open("https://play.google.com/store/search?q=dice%20jobs&c=apps");
+      }
+      
+    }
 
   });
 });

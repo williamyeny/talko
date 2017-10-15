@@ -61,6 +61,18 @@ function startRecognition() {
         })
       }
 
+      if (firstWord.includes("Play") && secondWord.includes("store")) {
+        var playStoreData = response.substr(response.indexOf(" ") + 6);
+        if (response.includes("Play store.")) {
+          playStoreData = "";
+          console.log("empty");
+        }
+        sendToTab({
+          "spType": "play store",
+          "data": playStoreData
+        })
+      }
+
       // back
       if (response == "Go back.") {
         sendToTab({"spType": "go back"});
