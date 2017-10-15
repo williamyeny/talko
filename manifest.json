@@ -37,7 +37,8 @@
       "js/contentscript.js"
     ],
     "css" : [ "css/spstyle.css" ],
-    "matches": ["*://*/*"]
+    "matches": ["*://*/*"],
+    "run_at": "document_end"
     // "all_frames": true
   }]
 
