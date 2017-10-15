@@ -119,6 +119,12 @@ function startRecognition() {
       if (response == "new tab."){
         chrome.tabs.create({});
       }
+      if(response == "help.") {
+        chrome.tabs.create({
+          url: chrome.extension.getURL("welcome.html"),
+          active: true
+        });
+      }
     /*  if (response == "Reload."){
         chrome.tabs.reload(null,{});
       }
