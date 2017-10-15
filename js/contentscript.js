@@ -33,36 +33,34 @@ chrome.runtime.sendMessage({}, function(spActivated) {
       document.getElementById("sp-status").innerHTML = "Ready";
       console.log("activity ended");
     } else if (request.spType == "click") {
-        console.log("click: " + request.data);
-        var links = document.getElementsByTagName('a');
-        var maxLinkScore = -1;
-        var maxLinkIndex = -1;
-        for (i = 0; i < links.length; i++) {
-          var linkArray = links[i].innerHTML.split(" ");
-          var reqArray = request.data.replace(".","").split(" ");
-          var linkScore = 0;
-          for (j = 0; j < linkArray.length; j++) {
-            for (k = 0; k < reqArray.length; k++) {
-              if (linkArray[j].toLowerCase() == reqArray[k].toLowerCase()) {
-                linkScore++;
-              }
+      request.data = request.data.replace(".", "");
+      console.log("click: " + request.data);
+      var links = document.getElementsByTagName('a');
+      var maxLinkScore = -1;
+      var maxLinkIndex = -1;
+      for (i = 0; i < links.length; i++) {
+        var linkArray = links[i].innerHTML.split(" ");
+        var reqArray = request.data.split(" ");
+        var linkScore = 0;
+        for (j = 0; j < linkArray.length; j++) {
+          for (k = 0; k < reqArray.length; k++) {
+            if (linkArray[j].toLowerCase() == reqArray[k].toLowerCase()) {
+              linkScore++;
             }
-          }
-          if (linkScore > maxLinkScore) {
-            maxLinkIndex = i;
-            maxLinkScore = linkScore;
           }
         }
         if (linkScore > maxLinkScore) {
           maxLinkIndex = i;
           maxLinkScore = linkScore;
         }
+      }
       if (maxLinkScore > 0) { // if at least one of them has a matching word
         links[maxLinkIndex].style.color = "black";
         links[maxLinkIndex].className += " animated pulse";
         links[maxLinkIndex].style["background-color"] = "#ffff00";
         links[maxLinkIndex].style["border-color"] = "#ffff00";
         setTimeout(function() {
+          console.log("clicking: " + links[maxLinkIndex].innerHTML);
           links[maxLinkIndex].click();
         }, 2000);
         

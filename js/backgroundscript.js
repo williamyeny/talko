@@ -25,43 +25,49 @@ function startRecognition() {
   client = new BingSpeech.RecognitionClient("5211aa2429decc09b3f4e0e1e9c1c458".split("").reverse().join("")); // haha totally not a secret thing
 
   client.onFinalResponseReceived = function (response) {
+    response = response.toLowerCase();
     console.log("onFinalResponseReceived: " + response);
 
     // start/stop recording speech
-    if (response.toLowerCase().includes("taco")) {
+    if (response.includes("taco")) {
       if (response.includes("start") && !spActivated) {
         spActivated = true;
         sendToTab({
           "spType": "start"
         });
+        return;
       } else if (response.includes("stop") && spActivated) {
         spActivated = false;
         sendToTab({
           "spType": "stop"
         });
+        return;
       }
     }
 
     if (spActivated) {
       // click
-      var firstWord = response.split(" ")[0];
+      if (response.split(" ")[0].includes("taco") && !(response.length > 1 ? response.split(" ")[1] : "").includes("stop.")) {
+        response = response.replace("taco ", "");
+      }
+      var firstWord = (response.length > 1 ? response.split(" ")[0] : "");
       var secondWord = (response.length > 1 ? response.split(" ")[1] : "");
 
-      console.log("First word: " + firstWord);
-      if (firstWord.includes("Click") || firstWord.includes("Quick") || secondWord.includes("click") || secondWord.includes("quick") ) {
+      // console.log("First word: " + firstWord);
+      if (firstWord.includes("click") || firstWord.includes("quick") || secondWord.includes("click") || secondWord.includes("quick") ) {
         sendToTab({
           "spType": "click",
           "data": response.substr(response.indexOf(" ") + 1)
         })
       }
-      if (firstWord.includes("Search") || secondWord.includes("search")) {
+      if (firstWord.includes("search") || secondWord.includes("search")) {
         sendToTab({
           "spType": "search",
           "data": response.substr(response.indexOf(" ") + 1)
         })
       }
 
-      if (firstWord.includes("Play") && secondWord.includes("store")) {
+      if (firstWord.includes("play") && secondWord.includes("store")) {
         var playStoreData = response.substr(response.indexOf(" ") + 6);
         if (response.includes("Play store.")) {
           playStoreData = "";
@@ -74,41 +80,41 @@ function startRecognition() {
       }
 
       // back
-      if (response == "Go back.") {
+      if (response == "go back.") {
         sendToTab({"spType": "go back"});
       }
 
       // scroll down
-      if (response == "Scroll down.") {
+      if (response == "scroll down.") {
         sendToTab({"spType": "scroll down"});
       }
 
       // scroll up
-      if (response == "Scroll up.") {
+      if (response == "scroll up.") {
         sendToTab({"spType": "scroll up"});
       }
 
-      if (response == "Search.") {
+      if (response == "search.") {
         sendToTab({"spType": "search"});  
       }
 
       //print page
-      if (response == "Print."){
+      if (response == "print."){
         sendToTab({"spType":"print"});
       }
 
-      if (response == "Full screen."){
+      if (response == "full screen."){
         chrome.windows.update(chrome.windows.WINDOW_ID_CURRENT, { state: 'fullscreen' } );
       }
-      if (response == "Minimize."){
+      if (response == "minimize."){
         //sendToTab({"spType":"minimize"});
         chrome.windows.update(chrome.windows.WINDOW_ID_CURRENT, { state: 'minimized' } );
       }
-      if (response == "Maximize."){
+      if (response == "maximize."){
         //sendToTab({"spType":"maximize"});
         chrome.windows.update(chrome.windows.WINDOW_ID_CURRENT, {state: 'maximized' } );
       }
-      if (response == "New tab."){
+      if (response == "new tab."){
         chrome.tabs.create({});
       }
     /*  if (response == "Reload."){
