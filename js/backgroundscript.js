@@ -45,12 +45,15 @@ function startRecognition() {
     }
 
     if (spActivated) {
+      var responseArray = response.split(" ");
       // click
-      if (response.split(" ")[0].includes("taco") && !(response.length > 1 ? response.split(" ")[1] : "").includes("stop.")) {
+      if (responseArray[0].includes("taco") && !(responseArray.length > 1 ? responseArray[1] : "").includes("stop.")) {
         response = response.replace("taco ", "");
       }
-      var firstWord = (response.length > 1 ? response.split(" ")[0] : "");
-      var secondWord = (response.length > 1 ? response.split(" ")[1] : "");
+
+      
+      var firstWord = (responseArray.length > 0 ? responseArray[0] : "");
+      var secondWord = (responseArray.length > 1 ? responseArray[1] : "");
 
       // console.log("First word: " + firstWord);
       if (firstWord.includes("click") || firstWord.includes("quick") || secondWord.includes("click") || secondWord.includes("quick") ) {
