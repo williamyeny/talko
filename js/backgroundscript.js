@@ -21,8 +21,7 @@ var listening = false;
 function startRecognition() {
 
   console.log("Recognition starting...");
-
-  client = new BingSpeech.RecognitionClient("5211aa2429decc09b3f4e0e1e9c1c458".split("").reverse().join("")); // haha totally not a secret thing
+  client = new BingSpeech.RecognitionClient("bd8403ca18e599dae6c4d3da9d64812b".split("").reverse().join("")); // haha totally not a secret thing
 
   client.onFinalResponseReceived = function (response) {
     response = response.toLowerCase();
@@ -170,7 +169,7 @@ function sendToTab(data) {
     } else {
       console.log("No active tab w/ content script running");
     }
-    
+
   });
 }
 
@@ -180,10 +179,9 @@ var waitForMicrophone = setInterval(function() {
       listening = true;
       clearInterval(waitForMicrophone);
       startRecognition();
-    }      
+    }
   }, function (e) {
       console.log("Waiting for microphone permission..." + e);
   });
-  
-},3000);
 
+},3000);
