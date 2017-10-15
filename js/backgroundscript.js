@@ -95,7 +95,7 @@ function startRecognition() {
         sendToTab({"spType":"maximize"});
       }
       if (response == "New tab."){
-        sendToTab({"spType":"newtab"});
+        chrome.tabs.create({});
       }
 
     }
