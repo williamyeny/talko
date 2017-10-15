@@ -57,6 +57,7 @@ chrome.runtime.sendMessage({}, function(spActivated) {
         }
       if (maxLinkScore > 0) { // if at least one of them has a matching word
         links[maxLinkIndex].style.color = "black";
+        links[maxLinkIndex].className += "animated pulse";
         links[maxLinkIndex].style.background = "#ffff00";
         setTimeout(function() {
           links[maxLinkIndex].click();
@@ -131,6 +132,7 @@ function spStart() {
   document.getElementById("sp-status-div").style.background = "linear-gradient(141deg, rgb(68, 64, 60), rgb(47, 49, 49))";
   document.getElementById("sp-status").innerHTML = "Ready";
   document.getElementById("sp-status-div").style.opacity = 1;
+  document.getElementById("sp-status-div").className = "animated bounce";
 }
 
 function spStop() {
