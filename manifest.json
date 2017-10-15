@@ -12,12 +12,11 @@
   },
 
   "icons": { 
-    "16": "pointer16.png",
-    "128": "pointer128.png" 
+    "128": "taco128.png" 
   },
 
   "browser_action": {
-    "default_icon": "pointer16.png"
+    "default_icon": "taco128.png"
   },
 
   "permissions": [
