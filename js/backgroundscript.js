@@ -45,14 +45,16 @@ function startRecognition() {
     if (spActivated) {
       // click
       var firstWord = response.split(" ")[0];
+      var secondWord = (response.length > 1 ? response.split(" ")[1] : "");
+
       console.log("First word: " + firstWord);
-      if (firstWord.includes("Click") || firstWord.includes("Quick") ) {
+      if (firstWord.includes("Click") || firstWord.includes("Quick") || secondWord.includes("click") || secondWord.includes("quick") ) {
         sendToTab({
           "spType": "click",
           "data": response.substr(response.indexOf(" ") + 1)
         })
       }
-      if (firstWord.includes("Search")) {
+      if (firstWord.includes("Search") || secondWord.includes("search")) {
         sendToTab({
           "spType": "search",
           "data": response.substr(response.indexOf(" ") + 1)

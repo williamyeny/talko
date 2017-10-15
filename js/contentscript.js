@@ -17,7 +17,7 @@ chrome.runtime.sendMessage({}, function(spActivated) {
     if(request.spType == "start") {
       console.log("Service enabled!");
       spStart();
-    } else if(request.spType == "stop") {
+    } else if(request.spType == "stop" || request.spType == "shop") {
       console.log("Service stopped.");
       spStop();
     } else if(request.spType == "onVoiceDetected") {
