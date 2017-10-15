@@ -57,8 +57,9 @@ chrome.runtime.sendMessage({}, function(spActivated) {
         }
       if (maxLinkScore > 0) { // if at least one of them has a matching word
         links[maxLinkIndex].style.color = "black";
-        links[maxLinkIndex].className += "animated pulse";
-        links[maxLinkIndex].style.background = "#ffff00";
+        links[maxLinkIndex].className += " animated pulse";
+        links[maxLinkIndex].style["background-color"] = "#ffff00";
+        links[maxLinkIndex].style["border-color"] = "#ffff00";
         setTimeout(function() {
           links[maxLinkIndex].click();
         }, 2000);
